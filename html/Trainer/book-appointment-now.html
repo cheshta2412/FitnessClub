@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment Now</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right,  #bfbaba,  #868585, #3C3C3C); /* Gradient background color */
+            color: #543e3e; /* Text color */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the buttons horizontally */
+            /* Center the buttons vertically */
+            /* Set height to 100% of the viewport height for vertical centering */
+            background-color: #0b0a0a; /* White background for the button container */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-top: 10px; /* Adjust the margin from the top */
+        }
+
+        .show-calendar-button,
+        .book-appointment-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px; /* Add some spacing between the buttons */
+        }
+
+        /* Style for the appointment modal */
+        #appointmentModal {
+            z-index: 1051; /* Adjust the z-index to be above the modal backdrop */
+        }
+        
+        h1{
+            color: #ffffff;
+            display: flex;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            height:25vh
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Welcome Trainer!</h1>
+    <div class="container">
+        <a href="#" class="btn btn-secondary mb-3" onclick="goBack()">Back</a>
+        <!-- Button container with "Show Calendar" and "Book Appointment Now" buttons -->
+        <div class="button-container">
+            <!-- Book Appointment Now button -->
+            <button class="book-appointment-button" data-toggle="modal" data-target="#appointmentModal">
+                Book Appointment Now
+            </button>
+        </div>
+
+        <!-- Appointment Modal -->
+        <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="appointmentModalLabel">Add Appointment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for adding a new appointment -->
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="clientName">Client Name:</label>
+                                <input type="text" class="form-control" id="clientName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointmentDateTime">Appointment Date and Time:</label>
+                                <input type="datetime-local" class="form-control" id="appointmentDateTime" required>
+                            </div>
+                            <button type="submit" class="btn btn-custom">Add Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (Make sure to include them before your custom script) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        
+
+        // Handle form submission for adding a new appointment
+        document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const clientName = document.getElementById('clientName').value;
+            const appointmentDateTime = document.getElementById('appointmentDateTime').value;
+
+            console.log('New Appointment:', { clientName, appointmentDateTime });
+            $('#appointmentModal').modal('hide');
+        });
+
+        // Function to go back
+        function goBack() {
+            window.location.href ='ForTrainer.html';
+        }
+    </script>
+</body>
+
+</html>
+

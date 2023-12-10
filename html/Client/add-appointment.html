@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Trainer Scheduler - Add Appointment</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include Bootstrap-datepicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <!-- Your custom styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right,   #cf8484,   #e47070,  #fb5a5a); /* Gradient background color */
+            color: #543e3e; /* Text color */
+            padding-top: 50px; /* Adjusted to accommodate the fixed navbar */
+        }
+
+        .container {
+            margin-top: 20px; /* Adjusted for better spacing */
+        }
+
+        .client-row {
+            background-color: #ffffff; /* White background for client rows */
+            border: 1px solid #e0e0e0; /* Light border */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .client-row:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-appointment {
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-appointment:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .close {
+            color: #fff;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #495057;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="#" class="btn btn-back mb-3" onclick="goBack()">Back</a>
+
+        <!-- Add Appointment Form -->
+        <div class="row client-row">
+            <div class="col-md-3">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+            </div>
+            <div class="col-md-3">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+            </div>
+            <div class="col-md-3">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter location">
+            </div>
+            <div class="col-md-3">
+                <label for="appointments">Appointments:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="appointmentDateTime" placeholder="Select date and time">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-appointment" data-toggle="modal" data-target="#appointmentModal">
+                            Add Appointment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Appointment Modal -->
+        <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="appointmentModalLabel">Add Appointment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Date and Time Picker -->
+                        <div class="form-group">
+                            <label for="appointmentDateTime">Select Date and Time:</label>
+                            <input type="text" class="form-control" id="appointmentDateTime" placeholder="Select date and time">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="saveAppointment()">Save Appointment</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap-datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Initialize datepicker -->
+    <script>
+        $(document).ready(function () {
+            $('#appointmentDateTime').datepicker({
+                format: 'yyyy-mm-dd',
+                todayHighlight: true,
+                autoclose: true,
+                startDate: new Date()
+            });
+        });
+    </script>
+    <script>
+        // Function to save appointment and show alert
+        function saveAppointment() {
+            // Add your logic here to save the appointment
+            // ...
+
+            // Display alert toaster
+            alert('Appointment added');
+
+            // Close the modal
+            $('#appointmentModal').modal('hide');
+        }
+    </script>
+    <script>
+        // Function to go back
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

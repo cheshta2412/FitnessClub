@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Appointments</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- Your custom styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #ffffff; /* Text color */
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .client-appointments {
+            background: linear-gradient(to right, #999ddf, #5c60ab,#1d228b); /* Gradient background color */
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointments-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .appointments-list li {
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #e9ecef;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .appointments-list li:hover {
+            transform: scale(1.05);
+        }
+
+        .client-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .appointment-time {
+            font-size: 14px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <a href="#" class="btn btn-secondary mb-3" onclick="goBack()">Back</a>
+        <div class="client-appointments">
+            <h3>Client Appointments</h3>
+            <ul class="appointments-list" id="clientAppointments">
+                <!-- Appointments will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Your custom JavaScript -->
+    <script>
+        // Sample appointments data
+        const appointmentsData = [
+            { client: 'John Doe', appointments: ['2023-12-15 10:00 AM', '2023-12-16 02:30 PM'] },
+            { client: 'Jane Smith', appointments: ['2023-12-18 11:00 AM', '2023-12-20 03:00 PM'] },
+            // Add more clients and appointments as needed
+        ];
+
+        // Function to display appointments for each client
+        function displayAppointments() {
+            const appointmentsList = document.getElementById('clientAppointments');
+
+            appointmentsData.forEach(clientData => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                listItem.innerHTML = `
+                    <div class="client-name">${clientData.client}</div>
+                    <div class="appointment-time">${clientData.appointments.join('<br>')}</div>
+                `;
+                appointmentsList.appendChild(listItem);
+            });
+        }
+
+        // Display appointments when the page loads
+        window.onload = function () {
+            displayAppointments();
+        };
+    </script>
+    <script>
+        // Function to go back
+        function goBack() {
+            window.location.href = 'HomePage.html';
+        }
+    </script>
+</body>
+
+</html>
