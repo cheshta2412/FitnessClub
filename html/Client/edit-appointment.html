@@ -7,6 +7,8 @@
     <title>Fitness Trainer Scheduler</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Include Bootstrap DateTimePicker CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
         body {
@@ -64,7 +66,7 @@
 
         #editAppointmentModal .modal-header {
             background: linear-gradient(to right, #ffbb00, #ff8500); /* Gradient background color */
-            color: #fff;
+            color: #f8f5f5;
             border-bottom: none;
             border-radius: 10px 10px 0 0;
         }
@@ -166,7 +168,24 @@
                 </div>
                 <div class="modal-body">
                     <!-- Add your edit form or content here -->
-                    <p>Edit form goes here.</p>
+                    <form id="editAppointmentForm">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name:</label>
+                            <input type="text" class="form-control" id="editFirstName" placeholder="Enter first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="editLastName">Last Name:</label>
+                            <input type="text" class="form-control" id="editLastName" placeholder="Enter last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="editLocation">Location:</label>
+                            <input type="text" class="form-control" id="editLocation" placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label for="editDateTime">Date and Time:</label>
+                            <input type="text" class="form-control" id="editDateTime" placeholder="Select date and time">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" onclick="confirmEdit()">Save Changes</button>
@@ -180,6 +199,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap DateTimePicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
     <!-- JavaScript for Edit Confirmation -->
     <script>
@@ -192,8 +214,8 @@
 
         // Function to handle confirmed edit
         function confirmEdit() {
-            // Simulate edit logic
-            console.log('Appointment edited successfully!');
+            // Add your logic to save the edited appointment
+            // ...
 
             // Display toaster notification
             alert('Appointment edited successfully!');
@@ -201,6 +223,25 @@
             // Close the modal after editing
             $('#editAppointmentModal').modal('hide');
         }
+
+        // Initialize DateTimePicker
+        $(document).ready(function () {
+            $('#editDateTime').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm A',
+                defaultDate: new Date(),
+                icons: {
+                    time: 'far fa-clock',
+                    date: 'far fa-calendar',
+                    up: 'fas fa-chevron-up',
+                    down: 'fas fa-chevron-down',
+                    previous: 'fas fa-chevron-left',
+                    next: 'fas fa-chevron-right',
+                    today: 'fas fa-crosshairs',
+                    clear: 'far fa-trash-alt',
+                    close: 'far fa-times-circle'
+                }
+            });
+        });
     </script>
     <script>
         // Function to go back
